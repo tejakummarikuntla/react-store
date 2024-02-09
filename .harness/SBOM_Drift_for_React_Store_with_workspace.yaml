@@ -44,6 +44,15 @@ pipeline:
                       limits:
                         memory: 500Mi
                         cpu: "0.5"
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: tejakummarikutla
+                    image: node:14
+                    shell: Sh
+                    command: echo "trigger.sourcebranch <+trigger.sourceBranch>"
           infrastructure:
             type: KubernetesDirect
             spec:
