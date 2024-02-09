@@ -1,4 +1,4 @@
-# Sample React T-Shirt Store
+# Sample React T-Shirt Store  
 
 The purpose this repository is to showcase the Google Pay integration in a store
 built with React.
