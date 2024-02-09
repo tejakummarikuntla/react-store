@@ -63,7 +63,7 @@ performance. The build is minified and the filenames include the hashes.
 
 1.  In your terminal, run `npm run build`
 
-## Support
+## Support    
 
 For more information about React, refer to the
 [React documentation](https://reactjs.org/).
