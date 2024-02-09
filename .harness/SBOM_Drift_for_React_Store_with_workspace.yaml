@@ -21,25 +21,29 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_2
-                  identifier: Run_2
+                  type: SscaOrchestration
+                  name: SscaOrchestration_1
+                  identifier: SscaOrchestration_1
                   spec:
-                    connectorRef: tejakummarikutla
-                    image: alpine
-                    shell: Sh
-                    command: |
-                      echo "Trigger event; <+trigger.event>"
-
-                      if [ <trigger.event> == "PUSH" ]; then
-                          AAAA ="<+trigger.targetBranch>"
-                      elif [ <trigger.event> == "pr" ]; then
-                          AAAA ="<+trigger.sourceBranch>"
-                      fi
-
-                      echo "branch_name var value: $AAAA"
-                    outputVariables:
-                      - name: AAAA
+                    mode: generation
+                    tool:
+                      type: Syft
+                      spec:
+                        format: spdx-json
+                    source:
+                      type: repository
+                      spec:
+                        url: https://github.com/tejakummarikuntla/react-store
+                        variant_type: branch
+                        variant: <+trigger.sourceBranch>
+                    sbom_drift:
+                      base: repository
+                      spec:
+                        variant: main
+                    resources:
+                      limits:
+                        memory: 500Mi
+                        cpu: "0.5"
           infrastructure:
             type: KubernetesDirect
             spec:
