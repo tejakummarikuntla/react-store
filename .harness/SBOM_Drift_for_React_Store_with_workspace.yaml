@@ -32,12 +32,14 @@ pipeline:
                       echo "Trigger event; <+trigger.event>"
 
                       if [ <trigger.event> == "PUSH" ]; then
-                          <+pipeline.variables.branch_name> ="<+trigger.targetBranch>"
+                          AAAA ="<+trigger.targetBranch>"
                       elif [ <trigger.event> == "pr" ]; then
-                          <+pipeline.variables.branch_name> ="<+trigger.sourceBranch>"
+                          AAAA ="<+trigger.sourceBranch>"
                       fi
 
-                      echo "branch_name var value: <+pipeline.variables.branch_name>"
+                      echo "branch_name var value: $AAAA"
+                    outputVariables:
+                      - name: AAAA
           infrastructure:
             type: KubernetesDirect
             spec:
