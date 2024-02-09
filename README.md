@@ -8,7 +8,7 @@ A deployed version of this app can be found at this link.
 **Note:** This sample app is not intended for use in a production environment!
 Please do not attempt to use it in this manner. For more information on
 deploying apps to production, see the
-[React documentation](https://create-react-app.dev/docs/deployment/).
+[React documentation](https://create-react-app.dev/docs/deployment/).  
 
 ## Prerequisites
 
