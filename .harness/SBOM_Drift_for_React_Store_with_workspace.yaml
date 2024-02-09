@@ -22,36 +22,13 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Install dependencies
-                  identifier: Install_dependencies
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: node:14
+                    connectorRef: tejakummarikutla
+                    image: tejakummarikuntla/node-app
                     shell: Sh
-                    command: |-
-                      rm -rf ./node_modules package-lock.json
-                      npm install
-              - step:
-                  type: SscaOrchestration
-                  name: Generate SBOM for main branch
-                  identifier: Generate_SBOM
-                  spec:
-                    mode: generation
-                    tool:
-                      type: Syft
-                      spec:
-                        format: spdx-json
-                    source:
-                      type: repository
-                      spec:
-                        url: https://github.com/tejakummarikuntla/react-store
-                        variant_type: branch
-                        variant: main
-                        cloned_codebase: /test/main_branch_folder
-                    resources:
-                      limits:
-                        memory: 500Mi
-                        cpu: "0.5"
+                    command: "echo <+pipeline.triggeredBy.triggerIdentifier> == "
           infrastructure:
             type: KubernetesDirect
             spec:
