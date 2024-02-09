@@ -22,14 +22,23 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  name: Run_2
+                  identifier: Run_2
                   spec:
                     connectorRef: tejakummarikutla
-                    image: tejakummarikuntla/node-app
+                    image: alpine
                     shell: Sh
                     command: |
-                      echo "<+pipeline.triggeredBy.triggerIdentifier> == Trigger_on_push_to_main"
+                      trigger_event="<+trigger.event>"
+                      echo "$tigger_event"
+
+                      if [ "$trigger_event" == "push" ]; then
+                          <+pipeline.variables.branch_name> ="<+trigger.targetBranch>"
+                      elif [ "$trigger_event" == "pr" ]; then
+                          <+pipeline.variables.branch_name> ="<+trigger.sourceBranch>"
+                      fi
+
+                      echo "branch_name var value: <pipeline_variables_branch_name>"
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -42,3 +51,9 @@ pipeline:
             enabled: false
   identifier: SBOM_Drift_for_React_Store_with_workspace
   name: SBOM Drift for React Store - with workspace
+  variables:
+    - name: branch_name
+      type: String
+      description: ""
+      required: false
+      value: ""
