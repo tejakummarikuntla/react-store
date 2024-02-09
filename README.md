@@ -71,3 +71,7 @@ For more information about React, refer to the
 For any questions on this sample app, please
 [submit an issue](https://github.com/google-pay/angular-store/issues/new) to
 this repository.
+
+
+
+
