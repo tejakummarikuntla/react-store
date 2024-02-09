@@ -31,7 +31,7 @@ pipeline:
                     command: |
                       echo "Trigger event; <+trigger.event>"
 
-                      if [ <trigger.event> == "push" ]; then
+                      if [ <trigger.event> == "PUSH" ]; then
                           <+pipeline.variables.branch_name> ="<+trigger.targetBranch>"
                       elif [ <trigger.event> == "pr" ]; then
                           <+pipeline.variables.branch_name> ="<+trigger.sourceBranch>"
