@@ -3,7 +3,7 @@
 The purpose this repository is to showcase the Google Pay integration in a store
 built with React.
 
-A deployed version of this app can be found at this link.
+A deployed version of this app can be found at this link. 
 
 **Note:** This sample app is not intended for use in a production environment!
 Please do not attempt to use it in this manner. For more information on
