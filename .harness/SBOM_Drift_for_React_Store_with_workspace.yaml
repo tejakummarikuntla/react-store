@@ -28,7 +28,8 @@ pipeline:
                     connectorRef: tejakummarikutla
                     image: tejakummarikuntla/node-app
                     shell: Sh
-                    command: "echo <+pipeline.triggeredBy.triggerIdentifier> == "
+                    command: |
+                      echo "<+pipeline.triggeredBy.triggerIdentifier> == Trigger_on_push_to_main"
           infrastructure:
             type: KubernetesDirect
             spec:
